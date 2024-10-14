@@ -28,15 +28,17 @@ def createRequests(numberOfRequests, numberOfFloors):
         q1 += normalRequestGenerator(numberOfFloors)
     for i in range(morning):
         if random.randint(1, 10) <= 7:
-            q1.append(numberOfFloors)
-            q1.append(random.randint(1, numberOfFloors - 1))
+            first = random.randint(2, numberOfFloors)
+            second = random.randint(1, first - 1)
+            q1.append(first)
+            q1.append(second)
         else:
             q1 += normalRequestGenerator(numberOfFloors)
     return bytes(q1)
 
 
 requests = createRequests(int(sys.argv[1]), int(sys.argv[2]))
-with open("requests/requests5.rq", "wb") as binary_file:
+with open("requests/requests6.rq", "wb") as binary_file:
     binary_file.write(requests)
-with open("requests/requests.rq", "rb") as binary_file:
+with open("requests/requests6.rq", "rb") as binary_file:
     print(binary_file.read())
